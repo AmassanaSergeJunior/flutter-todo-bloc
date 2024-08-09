@@ -1,8 +1,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todoapp/blocs/bloc/tasks_bloc.dart';
+
 import 'package:todoapp/models/task.dart';
+import 'package:todoapp/services/guid_gen.dart';
+
+import '../blocs/bloc_exports.dart';
 
 
 
@@ -47,6 +50,7 @@ TextEditingController titleController = TextEditingController();
                 onPressed: () {
                   var task = Task(
                     title: titleController.text,
+                    id: GUIDGen.generate(),
                   );
                   context.read<TasksBloc>().add(AddTask(task: task));
                   Navigator.pop(context);
