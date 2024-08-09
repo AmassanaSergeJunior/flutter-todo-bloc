@@ -3,12 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todoapp/blocs/bloc/tasks_bloc.dart';
 import 'package:todoapp/models/task.dart';
 import 'package:todoapp/screens/add_screen_screen.dart';
+import 'package:todoapp/screens/my_drawer.dart';
 
 import 'package:todoapp/widgets/tasks_list.dart';
 
 class TasksScreen extends StatefulWidget {
   const TasksScreen({super.key});
-
+  static const id = 'tasks_screen';
   @override
   State<TasksScreen> createState() => _TasksScreenState();
 }
@@ -41,13 +42,14 @@ class _TasksScreenState extends State<TasksScreen> {
               )
             ],
           ),
+          drawer: const MyDrawer(),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Center(
+              Center(
                 child: Chip(
                   label: Text(
-                    'Tasks:',
+                    '${state.allTasks.length} Tasks',
                   ),
                 ),
               ),
